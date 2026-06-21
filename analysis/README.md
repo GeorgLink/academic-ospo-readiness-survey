@@ -4,7 +4,7 @@ Two tools turn a LimeSurvey export into results. Both use the same item mapping 
 
 ## The spreadsheet (no code)
 
-`analysis-helper.xlsx` does the counting for you. Open it, go to the **Data (paste export here)** tab, delete the demo rows, and paste your export into cell A1. The summary tabs fill in: Service summary, Level summary, Maturity by area, Respondents, Importance, Experience & roles, and Write-ins. It works in Excel, LibreOffice Calc, and Google Sheets. It uses fully completed responses only; for a richer view that also uses partial responses, use the notebook.
+`analysis-helper.xlsx` does the counting for you. Open it, go to the **Data (paste export here)** tab, delete the demo rows, and paste your export into cell A1. The summary tabs fill in, in order: Respondents, Importance, Maturity by area, Level summary, Support needs by area, Service gaps, Experience & roles, Where support comes from, and Open comments. The **How to use** tab carries an index that links each of the survey's nine questions to the tab that answers it. It works in Excel, LibreOffice Calc, and Google Sheets. It uses fully completed responses only; for a richer view that also uses partial responses, use the notebook.
 
 ## The notebook (automated)
 
@@ -18,7 +18,7 @@ You need Visual Studio Code with the **Python** and **Jupyter** extensions (inst
 2. **Open `survey-analysis.ipynb`.** If VS Code offers to install the **Python**/**Jupyter** extensions or `ipykernel`, accept.
 3. **Point it at your data.** Put your exported `.xlsx` in this folder and set `INPUT_PATH` in the first code cell to its file name, for example `INPUT_PATH = "results-survey.xlsx"`.
 4. **Create the environment from the notebook.** Click **Select Kernel** (top-right of the notebook) → **Python Environments…** → **+ Create a Python Environment** → **Venv** → pick a **Python 3.10+** interpreter → tick **`requirements.txt`** so the dependencies install. VS Code builds a `.venv`, installs everything, and **auto-selects it as the kernel** (the top-right shows `.venv`), so there is no separate kernel-selection step.
-   - *Tip:* create the environment this way rather than building a `.venv` by hand in a terminal — a hand-made venv in this sub-folder may not be auto-discovered by the kernel picker. (The Command Palette command **Python: Create Environment** does the same thing if you prefer.)
+   - *Tip:* create the environment this way rather than building a `.venv` by hand in a terminal, because a hand-made venv in this sub-folder may not be auto-discovered by the kernel picker. (The Command Palette command **Python: Create Environment** does the same thing if you prefer.)
 5. **Run it.** Click **Run All** in the toolbar.
 
 Prefer JupyterLab instead? From this folder, run `pip install -r requirements.txt`, then `jupyter lab`, and open the notebook there.

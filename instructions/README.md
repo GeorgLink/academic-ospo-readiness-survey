@@ -1,13 +1,13 @@
 # How to run the survey
 
-These guides take you from the template file to a finished analysis, in four steps. They were written for LimeSurvey 6.17.7; other versions may look a little different. The file numbers are XN, where X is the step and N is supporting material for that step.
+These guides take you from the template file to a finished analysis, in four steps. They were written for LimeSurvey 6.17.9; other versions may look a little different. The file numbers are XN, where X is the step and N is supporting material for that step.
 
 ## Slides (optional)
 
 Prefer a visual walkthrough? The training deck covers the whole process step by step, with screenshots and speaker notes:
 
-- [Academic-OSPO-Readiness-Survey-Training.pptx](Academic-OSPO-Readiness-Survey-Training.pptx) — editable PowerPoint (speaker notes included)
-- [Academic-OSPO-Readiness-Survey-Training.pdf](Academic-OSPO-Readiness-Survey-Training.pdf) — PDF
+- [Academic-OSPO-Readiness-Survey-Training.pptx](Academic-OSPO-Readiness-Survey-Training.pptx): editable PowerPoint (speaker notes included)
+- [Academic-OSPO-Readiness-Survey-Training.pdf](Academic-OSPO-Readiness-Survey-Training.pdf): PDF
 
 ## Step 1: Set up
 
@@ -20,9 +20,9 @@ Prefer a visual walkthrough? The training deck covers the whole process step by 
 - [21-communications-plan.md](21-communications-plan.md): timing, channels, and reminder cadence.
 - [22-invitation-templates.md](22-invitation-templates.md): ready-to-edit invitation and reminder messages.
 
-## Step 3: Analyze
+## Step 3: Analyse
 
-- [30-analyze.md](30-analyze.md): export the responses and produce the results with the notebook or the spreadsheet.
+- [30-analyze.md](30-analyze.md): export the responses and produce the results (the spreadsheet, by hand, or the optional notebook).
 
 ## Step 4: Interpret
 

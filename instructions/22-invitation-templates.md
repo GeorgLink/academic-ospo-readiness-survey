@@ -19,7 +19,7 @@ Placeholders used below:
 
 > Hi everyone,
 >
-> Next week we'll send a short, anonymous survey about how [ORGANIZATION] uses and supports open source software. It takes about 12 minutes, and your answers will shape the support we build. Keep an eye out for it.
+> Next week we'll send a short, anonymous survey about how [ORGANIZATION] uses and supports open source software. It takes about 15 to 20 minutes, and your answers will shape the support we build. Keep an eye out for it.
 >
 > Thanks,
 > [SENDER NAME]
@@ -28,7 +28,7 @@ Placeholders used below:
 
 ## Invitation (launch day)
 
-**Subject:** Help shape open source support at [ORGANIZATION] (about 12 minutes)
+**Subject:** Help shape open source support at [ORGANIZATION] (about 15 to 20 minutes)
 
 > Hi [first name / everyone],
 >
@@ -36,7 +36,7 @@ Placeholders used below:
 >
 > **Take the survey:** [SURVEY LINK]
 >
-> It takes about 12 minutes and is anonymous. You don't need to be an expert. For many questions, "not sure" is a perfectly good answer. Please respond by **[CLOSE DATE]**.
+> It takes about 15 to 20 minutes and is anonymous. You don't need to be an expert. For many questions, "not sure" is a perfectly good answer. Please respond by **[CLOSE DATE]**.
 >
 > Questions? Just reply, or email [CONTACT EMAIL].
 >
@@ -55,13 +55,13 @@ Use as a short line at the top of the invitation, or as a separate note.
 
 ## Reminder 1 (about a week in)
 
-**Subject:** Reminder: open source survey (about 12 minutes)
+**Subject:** Reminder: open source survey (about 15 to 20 minutes)
 
 > Hi [first name / everyone],
 >
 > A quick reminder to share your views on open source at [ORGANIZATION]. If you've already responded, thank you, and please ignore this.
 >
-> **Survey:** [SURVEY LINK] · about 12 minutes · anonymous · closes [CLOSE DATE]
+> **Survey:** [SURVEY LINK] · about 15 to 20 minutes · anonymous · closes [CLOSE DATE]
 >
 > Thanks,
 > [SENDER NAME]
@@ -74,7 +74,7 @@ Use as a short line at the top of the invitation, or as a separate note.
 
 > Hi [first name / everyone],
 >
-> The open source survey closes on **[CLOSE DATE]**. If you haven't had a chance yet, we'd really value your input. It takes about 12 minutes and is anonymous.
+> The open source survey closes on **[CLOSE DATE]**. If you haven't had a chance yet, we'd really value your input. It takes about 15 to 20 minutes and is anonymous.
 >
 > **Survey:** [SURVEY LINK]
 >
@@ -85,7 +85,7 @@ Use as a short line at the top of the invitation, or as a separate note.
 
 ## Chat message (Slack / Teams / Mattermost)
 
-> :ballot_box_with_check: We're running a short, anonymous survey on how [ORGANIZATION] uses and supports open source. ~12 minutes, and it shapes what support we build. Please take it by [CLOSE DATE]: [SURVEY LINK]
+> :ballot_box_with_check: We're running a short, anonymous survey on how [ORGANIZATION] uses and supports open source. ~15 to 20 minutes, and it shapes what support we build. Please take it by [CLOSE DATE]: [SURVEY LINK]
 
 ---
 

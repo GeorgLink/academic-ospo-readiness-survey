@@ -1,6 +1,6 @@
 # Interpreting your results
 
-This guide explains how to read the survey results: what the survey can tell you, the three ways to produce the analysis, and how to do the analysis by hand.
+This guide explains what every survey result means and how to turn it into priorities, with the calculation behind each number so you can reproduce or adjust it. To *produce* the results in the first place (exporting from LimeSurvey and running the spreadsheet, the notebook, or the by-hand method), see [`30-analyze.md`](30-analyze.md). The sections here follow the same order as the analysis spreadsheet's tabs, so you can read them side by side with `analysis-helper.xlsx`.
 
 ## What this survey answers
 
@@ -16,7 +16,7 @@ The survey is built to answer nine questions about your institution and the peop
 8. Where does support for these practices currently come from inside your institution?
 9. How confident is your community in the open source practices relevant to their roles?
 
-The rest of this guide is organised around producing those answers.
+The spreadsheet carries the same list: its **How to use** tab has a "Where to find each answer" index that links each of these nine questions to the tab that answers it.
 
 ## What the survey measures
 
@@ -24,70 +24,51 @@ The survey records what each respondent is aware of. That matters most for Secti
 
 Because of this, the numbers are best read as signals and proportions ("about two-thirds of respondents say we have an open source policy"), not as exact institutional facts. Whether a given practice actually exists is something you can confirm separately, and the write-in fields often point to where a policy or process lives when one does.
 
-## Three ways to analyse your results
+## Which question is answered where
 
-There are three ways to turn an export into the answers above. They use the same method and produce the same numbers.
+| Question                              | Section below (Spreadsheet tab) |
+| ------------------------------------- | ------------------------------- |
+| 1. Who responded / representativeness | Respondents                     |
+| 2. Importance and why                 | Importance                      |
+| 3. Most and least mature areas        | Maturity by area                |
+| 4. Position on the L2–L5 ladder       | Level summary                   |
+| 5. Most-requested support             | Support needs by area           |
+| 6. Biggest maturity-versus-demand gap | Service gaps                    |
+| 7. Experience and roles               | Experience & roles              |
+| 8. Where support currently comes from | Where support comes from        |
+| 9. Community confidence               | Respondents                     |
 
-1. **The analysis notebook.** A Python notebook that reads your export and produces the charts, tables, and a findings summary automatically. It also adds a completion funnel, data-quality flags, a priority chart, and a progressive view that reports each insight over everyone who completed that part of the survey, not only those who finished (see [`30-analyze.md`](30-analyze.md)). Setup and usage are in the [analysis README](../analysis/README.md).
-2. **The analysis spreadsheet.** Paste your export into `analysis-helper.xlsx` and the tabs fill in. This guide's "spreadsheet" section below explains it.
-3. **By hand.** The rest of this guide walks through the analysis step by step. This is also the background for anyone who wants to understand what the notebook and the spreadsheet are doing.
+Each section below gives the calculation (so you can reproduce it by hand) and what the result tells you. To produce these numbers automatically instead, paste your export into the spreadsheet; see [`30-analyze.md`](30-analyze.md).
 
-The notebook and the spreadsheet do the same counting and roll-ups described in the by-hand sections, so you can reproduce any of their numbers yourself.
+---
 
-### Which method answers which question
+## Respondents
 
-| Question | By-hand section | Spreadsheet tab |
-|---|---|---|
-| 1. Who responded / representativeness | Who answered | Respondents |
-| 2. Importance and why | Who answered | Importance |
-| 3. Most and least mature areas | Maturity, by area | Maturity by area |
-| 4. Position on the L2–L5 ladder | Maturity, by level | Level summary |
-| 5. Most-requested services | Service demand | Service summary |
-| 6. Biggest maturity-versus-demand gap | The gap | Service summary |
-| 7. Experience and roles | Who answered | Experience & roles |
-| 8. Where support currently comes from | Write-in comments | Write-ins |
-| 9. Community confidence | Who answered | Respondents |
+Answers **question 1** (who responded) and **question 9** (confidence). These do not stand alone as findings; they tell you how much weight to put on everything else.
 
-## The spreadsheet (the shortcut)
+**How it's calculated.**
 
-`analysis-helper.xlsx` does the counting and the roll-ups for you; you paste your data in once. It works in Excel, LibreOffice Calc, and Google Sheets.
+- Roles (Q10): count how many respondents chose each role option. `count of each role`. Because Q10's options are meant to be customised per institution, the spreadsheet reads the role labels straight from your data on the **Respondents** tab (anything that does not match a label you listed is flagged as "Unmatched").
+- Confidence (Q22): count respondents at each of the four levels: Not confident, Somewhat confident, Confident, Very confident.
+- Unit / department: the free-text comment on Q10 is listed verbatim in the "In their own words" block on the same tab.
 
-To use it:
+**What it tells you.** Look at the role mix first. If most respondents come from one unit, then "maturity" really means "what that unit is aware of," and thin areas may reflect who did not answer, so note the mix before generalising. Confidence conditions how to read Section 3: a respondent who is new to open source and ticks few boxes is closer to "does not know" than "we do not do this." When unticked boxes cluster among the least-confident respondents, lean toward the "invisible" reading and treat better internal communication as part of the fix.
 
-1. Export your responses (settings in the next section).
-2. Open `analysis-helper.xlsx`.
-3. On the **Data (paste export here)** tab, select all, delete the demo rows, click cell A1, and paste your export.
-4. Read **Service summary** (maturity, demand, and the gap for each service), **Level summary** (the L2–L5 ladder), and the per-question tabs.
-5. On **Item results (auto)**, confirm the **Check** column is a tick on every row. A tick means the spreadsheet found that question in your data; a cross means the column was named differently than expected.
+## Importance
 
-The spreadsheet computes the share of respondents who ticked each item, which matches LimeSurvey's own "Gross percentage," then averages those item scores into the 13 services and the OSMM levels and subtracts to get the gap. It assigns each item to one primary service and one OSMM level, using the same mapping shown in the tables below. If you disagree with an assignment, change it on the **Item results (auto)** tab and the summaries update.
+Answers **question 2**: how much the community values open source, and why.
 
-## Exporting your responses
+**How it's calculated.**
 
-Both the spreadsheet and the notebook read one export. From LimeSurvey: **Results → Export results**, with these settings.
+- Importance (Q20): `share = round( count of each answer ÷ completed responses × 100 )` for each of Not important / Somewhat important / Important / Critical.
+- Reasons (Q21, tick all that apply): for each reason, `% = round( respondents who ticked it ÷ completed responses × 100 )`. Q21 only appears for respondents who said open source was at least somewhat important.
+- The "Other reason it matters" free-text is listed verbatim on the same tab.
 
-- Format: Microsoft Excel.
-- Headings: Question code and question text. This puts codes like `Q300` and `Q400` in the column headers so you can match them to `../survey/survey-questions.md`.
-- Strip HTML code: on.
-- Completion state: all responses.
-- Responses: full answers.
-- Columns: leave all selected.
+**What it tells you.** "X% say open source is important to our mission, mainly for [top reasons]" is often the single most persuasive line in a proposal. The reasons tell you which argument (cost, vendor lock-in, transparency, funder requirements, sovereignty) may likely resonate with leadership.
 
-The notebook and the spreadsheet count only completed responses for the numbers. If you analyze by hand, count only completed responses (the rows that have a submit date), or use LimeSurvey's Statistics page with Complete only, which does this for you.
+## Maturity by area
 
-A few things to expect in the file:
-
-- One row per respondent.
-- Each checkbox option is its own column, named with the question code and a sub-question code, for example `Q300[SQ001]`. A ticked box reads as `Yes`; an unticked box reads as `No` or is blank.
-- "None of the above" is its own column in each checklist block. When a respondent picks it, LimeSurvey blanks that block's other options to `N/A`. Read those `N/A` cells as "not in place": the respondent answered the question, they just reported nothing in place.
-- Single-choice questions (Q20 importance, Q22 confidence) have one column with the chosen option.
-- Free-text boxes (the "where does support come from" notes, "Other," and the final comment) are plain text columns.
-
-Keep `../survey/survey-questions.md` open beside the export so you can match codes to wording.
-
-## Maturity
-
-Section 3 asks which practices are already in place. The practices map onto the FINOS Open Source Maturity Model (OSMM), a five-level ladder.
+Answers **question 3**: which areas of practice are most and least mature. Section 3 asks which practices are already in place. The practices map onto the FINOS Open Source Maturity Model (OSMM), a five-level ladder.
 
 - L1, ad-hoc usage: open source is used informally, with no governance.
 - L2, compliant usage: governance, policy, compliance, security, and an OSPO.
@@ -97,15 +78,16 @@ Section 3 asks which practices are already in place. The practices map onto the 
 
 The survey measures L2 through L5. There is almost nothing at L1, because L1 is the absence of practice and there is little to tick. Most institutions show strength at L2 that thins out toward L4 and L5, and the shape of that decline is the story.
 
-### Reading maturity by hand
+**How it's calculated.**
 
-1. Per item: count how many respondents ticked each box and divide by the total number of completed respondents, not by the number of non-blank cells. A blank or `N/A` cell counts as "not in place," so everyone stays in the denominator. That is the share who say the practice is in place.
-2. Per area: average the item shares within a block (Q300, Q310, and so on) for a read on how mature your governance, security, or contribution practice is. This answers question 3.
-3. Per level: group items by their OSMM level and average each group. This answers question 4.
+1. Per item: `item % = round( respondents who ticked it ÷ completed responses × 100 )`. A blank counts as "not in place," so everyone stays in the denominator. In the spreadsheet this is the **Item results (auto)** `%` column, `=ROUND( ticks ÷ completed × 100, 0 )`.
+2. Per area: `area % = round( average of that area's item %s )`. In the spreadsheet, **Maturity by area** = `ROUND( AVERAGEIFS(item %, area = Q3x0), 0 )`.
+
+**What it tells you.** The highest areas are where your practice (or at least awareness of it) is strongest; the lowest are where it is absent or invisible. The least-mature areas are candidates for early attention, especially if Section 4 shows demand there (see Service gaps).
 
 ### Section 3 items, by area, level, and service
 
-Each item is tagged with its OSMM level and the Academic OSPO service it most closely supports (the 13 services are listed under Service demand). The mappings are best-fit defaults you can adjust to your own context.
+Each item is tagged with its OSMM level and the Academic OSPO service it most closely supports (the 13 services are listed under Service gaps). The mappings are best-fit defaults you can adjust on **Item results (auto)**.
 
 | Area | Practice item | OSMM level | Primary service |
 |---|---|---|---|
@@ -154,9 +136,25 @@ Each item is tagged with its OSMM level and the Academic OSPO service it most cl
 | | Allocates dedicated budget or funding to sustain and maintain its open source projects | L4 | 9 |
 | | Formally allocates staff time to open source maintenance and contribution | L4 | 9 |
 
-## Service demand
+## Level summary
 
-Section 4 asks which kinds of support people want. The survey does not ask "which services do you want?" directly. Instead, the seven themed support blocks (Q400–Q460) each map to the 13 Academic OSPO service categories. Tallying those across respondents tells you which services are most in demand, which answers question 5.
+Answers **question 4**: where your institution sits on the OSMM ladder.
+
+**How it's calculated.** `level % = average of that level's item %s`, using the OSMM level tagged on each Section 3 item above. In the spreadsheet, **Level summary** = `AVERAGEIFS( item %, type = "Maturity", level = "Lx" )` for each of L2–L5.
+
+**What it tells you.** Read the shape, not a single number. A typical profile is solid at L2 and declining through L4–L5. A high L2 with a steep drop says "we have the basics but little contribution, hosting, or strategy yet," which is a normal and defensible starting point. If L2 itself is low, foundational governance is the first priority.
+
+## Support needs by area
+
+Answers **question 5**: which kinds of support your community most wants. Section 4 asks people to tick the support they would value, across seven themed blocks (Q400–Q460).
+
+**How it's calculated.** `area % = round( average of that block's item %s )`, where each item % is the share of completed respondents who ticked it. In the spreadsheet, **Support needs by area** = `ROUND( AVERAGEIFS(item %, area = Q4x0, type = "Support"), 0 )`. The "Other support wanted" free-text for each block is listed verbatim on the same tab.
+
+**What it tells you.** The highest area is the broad kind of support your community asks for most: the headline of "what an OSPO should offer." For the service-by-service breakdown and how it compares with maturity, see Service gaps next.
+
+## Service gaps
+
+Answers **question 6**: where the biggest maturity-versus-demand gap is. This is the most decision-useful view. It restates Section 4 demand at the level of the 13 Academic OSPO services and sets it against the matching Section 3 maturity.
 
 The 13 Academic OSPO services:
 
@@ -179,40 +177,39 @@ The 13 Academic OSPO services:
 12. Outreach & Events: visibility activities such as conference sessions, outreach materials, and event presence.
 13. Open Source AI Policy: guidance on open source AI, including licensing of AI-generated code, AI tooling, and AI-regulation-aligned policy.
 
-### Reading demand by hand
+**How it's calculated.** Each Section 4 support item credits one primary service (table below); each Section 3 practice item credits one primary service (the table above, under Maturity by area). Then, for each service:
 
-1. For each ticked Section 4 item, credit its primary service (the first one listed in the table below).
-2. Sum the credits per service across all respondents.
-3. Rank the 13 services. The top of the ranking is what your community asks for most.
+- `maturity % = average of the Section 3 item %s mapped to that service` (spreadsheet **Service gaps**: `AVERAGEIFS( item %, service = n, type = "Maturity" )`).
+- `demand % = average of the Section 4 item %s mapped to that service` (spreadsheet **Service gaps**: `AVERAGEIFS( item %, service = n, type = "Support" )`).
+- `gap = demand % − maturity %`.
 
-Two things to watch while you tally:
+Two things to watch: the Tools and compute block (Q450) is infrastructure-heavy: nearly all its items map to Developer Tooling & Infrastructure (service 11), so if 11 dominates, check whether the "access to … at low/no cost" items are driving it. And service 1 (OSPO Strategy & Vision) has no demand item; its reading comes from the Section 3 practice questions only.
 
-- The Tools and compute block (Q450) is infrastructure-heavy: nearly all its items map to Developer Tooling & Infrastructure (service 11). If service 11 dominates, check whether the "access to … at low/no cost" items are driving it.
-- Service 1 (OSPO Strategy & Vision) receives no direct support item. It is read from the Section 3 practice questions, not from demand.
+**What it tells you.** The services to act on first are those where maturity is low and demand is high, a positive and large gap. For example, if few respondents tick the supply-chain security practices and many ask for "advice on security management" or "assessing vendor obligations," that is an evidence-backed case for investing in Supply-Chain Security & SBOM. The **Service gaps** tab sorts this for you; the top of the list, filtered to genuinely low-maturity services, is your priority order.
 
 ### Section 4 items and services
 
-The mapping is many-to-many; the primary service is listed first. Each block also has a free-text comment box, read by hand under Write-in comments.
+Each support item is credited to one primary service. (The full many-to-many mapping is available on **Item results (auto)** if you want to adjust it.)
 
-| Block | Support item | Services (primary first) |
+| Block | Support item | Primary service |
 |---|---|---|
 | **Q400 Legal, compliance, and risk** | Legal and open source licensing advice and support | 4 |
 | | Advice on security management | 5 |
-| | Advice on dependency management | 5, 6 |
-| | Assessing vendor open source obligations (e.g. CRA compliance, software bills of materials) | 5, 4 |
-| | Grant compliance with respect to open source requirements | 9, 4 |
+| | Advice on dependency management | 5 |
+| | Assessing vendor open source obligations (e.g. CRA compliance, software bills of materials) | 5 |
+| | Grant compliance with respect to open source requirements | 9 |
 | | Policy recommendations and best practices around open source AI | 13 |
-| **Q410 Selection, use, and procurement** | Guidelines or policies for using open source software within [ORGANIZATION] | 6, 4 |
+| **Q410 Selection, use, and procurement** | Guidelines or policies for using open source software within [ORGANIZATION] | 6 |
 | | Guidelines or policies for procuring open source software | 6 |
-| | A curated catalogue or directory of open source tools relevant to [ORGANIZATION]'s community | 6, 11 |
-| **Q420 Project creation and maintenance** | Guidelines or policies on managing and maintaining an open source project | 3, 7 |
+| | A curated catalogue or directory of open source tools relevant to [ORGANIZATION]'s community | 6 |
+| **Q420 Project creation and maintenance** | Guidelines or policies on managing and maintaining an open source project | 3 |
 | | Guidance on transitioning an internal project to open source | 7 |
-| | Support writing documentation for open source projects | 3, 11 |
-| | An assessment or audit of my open source project's community health and contributor readiness | 10, 3 |
+| | Support writing documentation for open source projects | 3 |
+| | An assessment or audit of my open source project's community health and contributor readiness | 10 |
 | **Q430 Community and mentoring** | An open source community of practice, discussion group, or learning group | 2 |
 | | Mentorship on open source practices for myself or my team | 2 |
-| | Mentoring programmes to bring new people into my project | 2, 12 |
-| | Training, workshops, and educational materials on open source topics and tools (e.g. programming languages, popular packages) | 2, 4, 5, 11 |
+| | Mentoring programmes to bring new people into my project | 2 |
+| | Training, workshops, and educational materials on open source topics and tools | 2 |
 | **Q440 Funding and sustainability** | Support identifying potential funding sources | 9 |
 | | Support with grant applications and grant writing | 9 |
 | | Dedicated grants or funding from [ORGANIZATION] to sustain and maintain my open source projects | 9 |
@@ -220,7 +217,7 @@ The mapping is many-to-many; the primary service is listed first. Each block als
 | **Q450 Tools and compute resources** | Hosted development tools and infrastructure for open source software | 11 |
 | | Support creating containers (e.g. Docker) for my open source software | 11 |
 | | Access to CPU or high-performance computing resources at low or no cost | 11 |
-| | Access to GPU resources (e.g. for AI/ML workloads) at low or no cost | 11, 13 |
+| | Access to GPU resources (e.g. for AI/ML workloads) at low or no cost | 11 |
 | | Access to data storage infrastructure at low or no cost | 11 |
 | | Access to CI/CD pipelines and automated testing infrastructure at low or no cost | 11 |
 | | Access to hosted test or staging environments at low or no cost | 11 |
@@ -228,47 +225,48 @@ The mapping is many-to-many; the primary service is listed first. Each block als
 | **Q460 Advocacy and outreach** | Internal advocacy support to secure organisational buy-in for open source | 8 |
 | | Marketing and promotion support for my open source projects | 12 |
 | | Help hosting, planning, or co-sponsoring open source events (e.g. conferences and hackathons) | 12 |
-| | Support building partnerships and collaborations with external organisations | 12, 2 |
-| | Support communicating or measuring the societal impact of my open source work | 10, 12 |
+| | Support building partnerships and collaborations with external organisations | 12 |
+| | Support communicating or measuring the societal impact of my open source work | 10 |
 
-## The gap
+### Priority tiers
 
-This combines maturity and demand, and it is the most decision-useful view. It answers question 6.
-
-For each service you now have two readings: maturity from the Section 3 items mapped to that service, and demand from the Section 4 roll-up. The services to act on first are those where maturity is low and demand is high. For example, if few respondents tick the supply-chain security practices (the Q310 risk item and the Q320 security items) and many ask for "advice on security management" or "assessing vendor obligations," that is an evidence-backed case for investing in Supply-Chain Security & SBOM.
-
-A simple way to present it: list the 13 services and, for each, note "practice: low/medium/high" beside "demand: low/medium/high." The low-practice, high-demand rows are your priorities.
-
-## Who answered
-
-The nine questions above include several about the people who responded, not the institution. These do not stand alone as findings; they tell you how much weight to put on the rest and let you read it in context.
-
-- **Representativeness (question 1).** Look at the role question (Q10) first. If most respondents come from one unit, then "maturity" really means "what that unit is aware of," and thin areas may reflect who did not answer. Note the mix before generalising. If you customised Q10’s role options, the notebook reads roles straight from your data, while in the spreadsheet you update the role labels on the **Respondents** tab to match (anything unmatched is flagged there).
-- **Importance and reasons (question 2).** Q20 and Q21 show how much the community values open source and why. "X% say open source is important to our mission, mainly for [reasons]" is often the most persuasive line in a proposal.
-- **Confidence (question 9).** Q22 conditions how to read Section 3. A respondent who is new to open source or low in confidence and ticks few boxes is closer to "does not know" than "we do not do this." When unticked boxes cluster among the least-confident respondents, lean toward the "invisible" reading and treat better internal communication as part of the fix.
-- **Experience and roles (question 7).** Section 5 (Q52, Q54) shows how people participate in open source and in what roles, which describes the community the OSPO would serve.
-
-## Write-in comments
-
-The optional free-text boxes answer question 8. Each Section 3 area has a "where is support for this currently available?" box (Q301–Q371), each Section 4 block has an "any other support?" box (Q401–Q461), and Q70 is the final comment. Read them verbatim, grouped by question. They locate existing capability ("the library already does this") and surface needs the checkboxes miss.
-
-## Priority tiers
-
-As a rough starting order, the 13 services are often grouped into tiers. These are illustrative, a reasonable sequence for a new OSPO, not a prescription. Set your own priorities from your own results.
+As a rough starting order, the 13 services are often grouped into tiers. These are illustrative, a reasonable sequence for a new OSPO, not a prescription. Always set your own priorities from your own gap results.
 
 - Essential: 1 OSPO Strategy & Vision, 2 Community of Practice, 3 Project Lifecycle Support & Maintenance, 4 License & IPR Compliance, 5 Supply-Chain Security & SBOM.
 - Should do: 6 Choosing, Using & Procuring Open Source, 7 Open-Sourcing Guidance, 8 Internal Advocacy & Buy-In, 9 Sustainability & Funding Support, 10 Impact Measurement.
 - Optional and forward-looking: 11 Developer Tooling & Infrastructure, 12 Outreach & Events, 13 Open Source AI Policy.
 
+## Experience & roles
+
+Answers **question 7** (how people participate and in what roles) and feeds **question 9**. Section 5 is optional and gated by Q51: only respondents who said yes saw Q52–Q58.
+
+**How it's calculated.** The denominator is the people who opted in (Q51 = Yes), not all completed respondents, because only they saw these questions. For each option, `% = round( respondents who ticked it ÷ opted-in respondents × 100 )`. The spreadsheet reports the Q51 opt-in count first, then each block (participation Q52/Q53, contributor roles Q54, motivations Q55, project categories Q56, challenges Q57) on that basis. The "Other …" free-text for Q52, Q54, Q55, Q56 and the Q58 challenges note are listed verbatim on the same tab.
+
+**What it tells you.** This describes the community the OSPO would serve: how hands-on they are (from "follow updates" to "maintain a project"), the roles they hold, why they take part, and the challenges they hit. High challenge counts (limited time, recognition, funding) point to support an OSPO can offer directly, and line up with the Service gaps.
+
+## Where support comes from
+
+Answers **question 8**: where support for each area of practice currently lives inside your institution. This is answered entirely by free text: each Section 3 area has a "where is support for this currently available?" box (Q301–Q371).
+
+**How it's calculated.** There is nothing to average: the spreadsheet lists every non-empty answer verbatim, grouped by area, with a count per area. Read them directly.
+
+**What it tells you.** These notes locate existing capability the checkboxes miss ("the library already runs this," "central IT handles compliance"). They turn a low maturity score into something actionable: either the practice exists in one unit and needs to be made visible, or it genuinely is not there.
+
+## Open comments
+
+The closing free-text question (Q70) collects anything respondents felt was missed. The spreadsheet lists these verbatim on the **Open comments** tab. Read them for context and for issues the structured questions did not capture.
+
+---
+
 ## Data-quality checks
 
 Before trusting the numbers, scan for two patterns in the checklist questions (Sections 3 and 4).
 
-- Ticks everything. A respondent who checks every box in a long checklist is often straight-lining rather than answering carefully. Consider removing these responses.
-- Ticks nothing, or only "None of the above." This may indicate disengagement, or a genuine "we do not do any of this." Read it alongside their other answers.
+- Ticks everything. A respondent who checks every box in a long checklist is often straight-lining rather than answering carefully. Consider setting these aside.
+- Ticks nothing. This may indicate disengagement, or a genuine "we do not do any of this." Read it alongside their other answers.
 
-With a small sample, consider reporting headline figures both with and without these respondents and noting the difference. The notebook flags both automatically.
+With a small sample, consider reporting headline figures both with and without these respondents and noting the difference. The optional notebook flags both patterns automatically.
 
 ## A note on these mappings
 
-The item-to-level and item-to-service mappings are best-fit interpretations. They give you a consistent, defensible way to read results out of the box, but they are not the only reasonable reading. If a mapping does not fit how your institution thinks about its work, adjust it, and apply the same mapping consistently across all respondents so your comparisons stay valid.
+The item-to-level and item-to-service mappings are best-fit interpretations. They give you a consistent, defensible way to read results out of the box, but they are not the only reasonable reading. If a mapping does not fit how your institution thinks about its work, adjust it on **Item results (auto)**, and apply the same mapping consistently across all respondents so your comparisons stay valid.

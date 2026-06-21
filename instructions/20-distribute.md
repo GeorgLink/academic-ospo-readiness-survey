@@ -29,7 +29,7 @@ A good middle path: use a participant list for the groups you most want to reach
 ## Tips for a good response rate
 
 - **Send from a person, not a system.** Invitations from a named, recognisable sender do better than no-reply addresses.
-- **Keep the invitation short.** Say why it matters, how long it takes (about 12 minutes), and that it's anonymous. The templates do this.
+- **Keep the invitation short.** Say why it matters, how long it takes (about 15 to 20 minutes), and that it's anonymous. The templates do this.
 - **Time it well.** Avoid holidays, exam periods, and the first and last weeks of term. Mid-week mornings tend to work.
 - **Send reminders.** Two reminders, spaced about a week apart, typically recover a meaningful share of responses. With a participant list, reminders go only to non-responders.
 - **Get a visible endorsement.** A short note of support from a dean, CIO, or respected colleague raises response rates more than anything else.
@@ -41,4 +41,4 @@ Decide your end date in advance (two to three weeks is common) and put it in the
 
 When you're done collecting, export the responses: **Results → Export results**. The exact settings are in [30-analyze.md](30-analyze.md). Keep the exported file safe for the analysis stage.
 
-> Next, [30-analyze.md](30-analyze.md) turns the export into results with the notebook or the spreadsheet, and [40-interpret.md](40-interpret.md) explains how to read them.
+> Next, [30-analyze.md](30-analyze.md) turns the export into results with the spreadsheet, by hand, or the optional notebook, and [40-interpret.md](40-interpret.md) explains how to read them.

@@ -1,6 +1,6 @@
 # 1. Set up the survey
 
-*Written for LimeSurvey Cloud 6.17.7. The interface may look slightly different in other versions; the steps and menu names are usually stable even when the layout changes.*
+*Written for LimeSurvey Cloud 6.17.9. The interface may look slightly different in other versions; the steps and menu names are usually stable even when the layout changes.*
 
 This guide takes you from a blank slate to a live survey link. From creating an account to a shareable link, it takes about 30–45 minutes.
 
@@ -114,7 +114,7 @@ A panel with **Find** and **Replace** fields appears at the top right.
 
 **4.5** Click **Import survey**. LimeSurvey processes the file.
 
-**4.6** On success you see a summary, including **25 question groups, 46 questions, 156 subquestions, and 15 answers**. Click **Go to survey** to open the editor.
+**4.6** On success you see a summary, including **25 question groups, 46 questions, 135 subquestions, and 15 answers**. Click **Go to survey** to open the editor.
 
 > **If you see "Invalid email address":** the `[CONTACT EMAIL]` token wasn't replaced before import. Go back to VS Code, finish the find-and-replace for all tokens (Part 3), re-save, and import again.
 

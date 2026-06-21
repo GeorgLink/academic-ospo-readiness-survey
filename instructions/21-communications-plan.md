@@ -15,6 +15,17 @@ A typical survey duration is about three weeks: a short warm-up, a launch, two r
 | Week 3, end | Close | Survey closes; thank-you note *(optional)* | Everyone |
 | After analysis | Share back | A short summary of what you heard and what you'll do | Everyone, especially anyone who emailed the survey contact to hear the outcome |
 
+## Running it small (no sponsor)
+
+You do not need an institution-wide campaign or a senior endorsement to get useful results. If you are running the survey grassroots, among your own group, team, or network of colleagues, scale the plan down.
+
+- Send a short personal note to people you know, rather than a broadcast. A direct "I'm trying to understand what open source support we need here; would you take fifteen minutes?" gets a better response than a formal announcement.
+- Skip the sponsor and endorsement steps. They help a large campaign, but they are not required.
+- Use an open survey link so anyone you share it with can respond.
+- A dozen thoughtful responses from the people closest to the work is a good starting point. You can widen distribution later if the results warrant it.
+
+Share the results back to the people who took part, and use them to make the case for more support, or for an OSPO. The rest of this plan still applies; you are working at a smaller scale.
+
 ## Audiences and who should send
 
 - **The invitation** lands best from a named, recognisable person, not a no-reply address. A research-software lead, library director, or IT leader works well.
@@ -42,14 +53,14 @@ Don't rely on a single channel. A combination of one email plus one community po
 Every message should make four things obvious:
 
 1. **Why it matters.** You're shaping open source support at [ORGANIZATION].
-2. **How long it takes.** About 12 minutes, less if you skip the optional section.
+2. **How long it takes.** About 15 to 20 minutes, less if you skip the optional section.
 3. **It's anonymous.** "Not sure" is a fine answer.
 4. **When it closes.** Give a clear deadline.
 
 ## Roles (small teams)
 
 - **Owner.** Runs the campaign, owns the schedule, and sends the messages.
-- **Sponsor.** The senior person who endorses it.
+- **Sponsor** *(optional)*. A senior person who endorses it. Helpful for a wide campaign, not needed for a small, grassroots run.
 - **Reviewer.** Your data-protection contact, who signs off the data-handling statement once.
 
 ## What to watch

@@ -1,4 +1,4 @@
-# Using AI to analyze your results
+# Using AI to analyse your results
 
 An AI assistant (such as ChatGPT, Claude, Gemini, or Copilot) can turn your computed results into a readable summary, suggest priorities, draft communications for stakeholders, and group the free-text answers into themes. It is a writing and interpretation aid, not a calculator. Do the counting with the spreadsheet or the notebook first, then give the AI the results rather than the raw data.
 
@@ -16,7 +16,7 @@ The AI sees only what you paste. It has no access to your files unless you provi
 
 ## What AI does and does not do well here
 
-It is useful for summarizing the numbers in plain language, turning the gap table into a phased plan, drafting a leadership one-pager or talking points, grouping free-text comments into themes, and explaining what a maturity pattern typically means.
+It is useful for summarising the numbers in plain language, turning the gap table into a phased plan, drafting a leadership one-pager or talking points, grouping free-text comments into themes, and explaining what a maturity pattern typically means.
 
 It is not reliable for producing the numbers, which you should always compute yourself, and it will guess at figures if you let it. It does not make the final call on priorities. It drafts, and you decide.
 
@@ -24,7 +24,7 @@ Add this line to every prompt: "Use only the numbers I provide. Do not invent or
 
 ## What to paste in
 
-The most useful and safest input is the service summary and level summary from `../analysis/analysis-helper.xlsx`, which give the maturity, demand, and gap per service and the L2–L5 ladder. The item results add the per-item percentages when you want the detail behind a service. The notebook's `findings.md` is already a plain-text summary of the headline numbers. The LimeSurvey Statistics export gives per-question counts for demographics, importance, and confidence. Write-ins should go in only after de-identification, and ideally as themes rather than verbatim text.
+The most useful and safest input is the Service gaps and Level summary tabs of `../analysis/analysis-helper.xlsx`, which give the maturity, demand, and gap per service and the L2–L5 ladder. The item results add the per-item percentages when you want the detail behind a service. The notebook's `findings.md` is already a plain-text summary of the headline numbers. The LimeSurvey Statistics export gives per-question counts for demographics, importance, and confidence. Write-ins should go in only after de-identification, and ideally as themes rather than verbatim text.
 
 To copy a table from the spreadsheet, select it and paste. The AI reads tab-separated or comma-separated text.
 
@@ -34,7 +34,7 @@ Executive summary for leadership:
 
 > Below are aggregated results from an open source survey at our institution. Write a one-page summary for university leadership: where we stand on open source maturity, what our community most wants, and the three priorities where maturity is low but demand is high. Plain language, no jargon. Use only the numbers I provide. Do not invent or estimate any figures. If something isn't supported by the data I gave you, say so.
 >
-> [paste Service summary + Level summary]
+> [paste Service gaps + Level summary]
 
 Turn the gaps into a phased plan:
 
@@ -50,7 +50,7 @@ Interpret the maturity pattern:
 
 Theme the free-text comments (de-identified):
 
-> Below are anonymized free-text comments about where open source support currently exists at our institution. Group them into themes, summarize each theme in a sentence, and flag any that name a specific existing capability or a specific gap. Do not infer identities. Use only the numbers I provide. Do not invent or estimate any figures. If something isn't supported by the data I gave you, say so.
+> Below are anonymised free-text comments about where open source support currently exists at our institution. Group them into themes, summarise each theme in a sentence, and flag any that name a specific existing capability or a specific gap. Do not infer identities. Use only the numbers I provide. Do not invent or estimate any figures. If something isn't supported by the data I gave you, say so.
 >
 > [paste de-identified write-ins]
 
@@ -58,7 +58,7 @@ Talking points for a specific audience:
 
 > Using the summary below, write five talking points to make the case for investing in open source support to [audience: e.g. the CIO, a faculty senate, or a funding body]. Keep each to two sentences and ground each in a specific number. Use only the numbers I provide. Do not invent or estimate any figures. If something isn't supported by the data I gave you, say so.
 >
-> [paste Service summary + the importance and confidence figures]
+> [paste Service gaps + the importance and confidence figures]
 
 ## Checking the AI's output
 
