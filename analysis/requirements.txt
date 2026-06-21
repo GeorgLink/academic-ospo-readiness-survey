@@ -1,0 +1,11 @@
+# Dependencies for survey-analysis.ipynb.
+# Version ranges are pinned to the majors the notebook was built and tested against
+# (tested with pandas 2.3, numpy 2.2, matplotlib 3.10). The upper bounds guard against
+# the next major release changing behaviour; widen them only after re-testing Run All.
+pandas>=2.2,<3
+numpy>=1.26,<3
+matplotlib>=3.8,<4
+openpyxl>=3.1,<4
+ipykernel>=6.29,<8
+adjustText>=1.1,<2
+jupyterlab>=4.0,<5
