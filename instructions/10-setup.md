@@ -40,7 +40,7 @@ If you already have a LimeSurvey instance and are logged in, skip to Part 2.
 
 **2.1** Open the project repository:
 
-> `https://github.com/GeorgLink/academic-ospo-readiness-survey`
+> `https://github.com/CURIOSSorg/Academic-OSPO-Readiness-Survey`
 >
 > *(The person who shared this package will have given you the URL.)*
 
